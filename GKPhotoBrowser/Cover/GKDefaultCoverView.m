@@ -50,7 +50,7 @@
 - (void)updateCoverWithPhoto:(GKPhoto *)photo {
     if (photo.isVideo) {
         self.countLabel.hidden = YES;
-        self.pageControl.hidden = YES;
+        self.pageControl.alpha = 0;
         self.saveBtn.hidden = YES;
     }else {
         if (self.browser.configure.hidesCountLabel) {
@@ -60,10 +60,10 @@
         }
         
         if (self.browser.configure.hidesPageControl) {
-            self.pageControl.hidden = YES;
+            self.pageControl.alpha = 0;
         }else {
             if (self.pageControl.hidesForSinglePage) {
-                self.pageControl.hidden = self.browser.photos.count <= 1;
+                self.pageControl.alpha = self.browser.photos.count > 1;
             }
         }
         self.saveBtn.hidden = self.browser.configure.hidesSavedBtn;
@@ -95,7 +95,7 @@
     if (!_pageControl) {
         UIPageControl *pageControl = [UIPageControl new];
         pageControl.hidesForSinglePage = YES;
-        pageControl.hidden = YES;
+        pageControl.alpha = 0;
         pageControl.enabled = NO;
         if (@available(iOS 14.0, *)) {
             pageControl.backgroundStyle = UIPageControlBackgroundStyleMinimal;
