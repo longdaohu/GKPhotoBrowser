@@ -296,6 +296,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 隐藏
 - (void)didDisappear;
 
+/// 是否需要顶部渐变
+@property (nonatomic, assign) BOOL isTopGradientLayer;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -82,9 +82,9 @@
     if (!_countLabel) {
         UILabel *countLabel = [UILabel new];
         countLabel.textColor = UIColor.whiteColor;
-        countLabel.font = [UIFont systemFontOfSize:16.0f];
+        countLabel.font = [UIFont fontWithName:@"PingFangSC-Semibold" size:20];;
         countLabel.textAlignment = NSTextAlignmentCenter;
-        countLabel.bounds = CGRectMake(0, 0, 80, 30);
+        countLabel.bounds = CGRectMake(0, 0, 80, 44);
         countLabel.hidden = YES;
         _countLabel = countLabel;
     }

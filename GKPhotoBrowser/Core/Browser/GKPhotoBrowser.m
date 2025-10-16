@@ -64,6 +64,9 @@
 // livePhoto
 @property (nonatomic, weak) id<GKLivePhotoProtocol> livePhoto;
 
+// 顶部渐变
+@property (nonatomic, strong) CAGradientLayer *topGradientLayer;
+
 @end
 
 @implementation GKPhotoBrowser
@@ -165,6 +168,9 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentView];
     [self.contentView addSubview:self.photoScrollView];
+    if (self.configure.isTopGradientLayer){
+        [self.contentView.layer addSublayer:self.topGradientLayer];
+    }
     
     [self setupCoverViews];
     [self layoutSubviews];
@@ -892,6 +898,21 @@
 
 - (GKPhotoView *)currentPhotoView {
     return [self photoViewForIndex:self.currentIndex];
+}
+
+- (CAGradientLayer *)topGradientLayer {
+    if (!_topGradientLayer) {
+        _topGradientLayer = [CAGradientLayer layer];
+        _topGradientLayer.frame = CGRectMake(0, 0, self.view.bounds.size.width, kSafeTopSpace + 44);
+        _topGradientLayer.colors = @[
+            (id)[UIColor colorWithRed:32/255.0 green:32/255.0 blue:32/255.0 alpha:0.6].CGColor,
+            (id)[UIColor colorWithRed:32/255.0 green:32/255.0 blue:32/255.0 alpha:0.0].CGColor
+        ];
+        _topGradientLayer.startPoint = CGPointMake(0.5, 0);
+        _topGradientLayer.endPoint = CGPointMake(0.5, 1);
+        _topGradientLayer.masksToBounds = YES;
+    }
+    return _topGradientLayer;
 }
 
 @end

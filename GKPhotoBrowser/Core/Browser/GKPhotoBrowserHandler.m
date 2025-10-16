@@ -51,7 +51,7 @@
         if (self.configure.showStyle == GKPhotoBrowserShowStylePushZoom) {
             [vc.navigationController pushViewController:self.browser animated:NO];
         }else {
-            [vc.navigationController pushViewController:self.browser animated:YES];
+            [vc.navigationController pushViewController:self.browser animated:NO];
         }
     }else {
         UIViewController *presentVC = self.browser;
@@ -203,7 +203,7 @@
         self.isDismiss = YES;
         [self.browser removeRotationObserver];
         self.browser.photoScrollView.clipsToBounds = YES;
-        [self.browser.navigationController popViewControllerAnimated:YES];
+        [self.browser.navigationController popViewControllerAnimated:NO];
     }else {
         // 显示状态栏
         [self.browser setStatusBarShow:YES];
