@@ -299,6 +299,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否需要顶部渐变
 @property (nonatomic, assign) BOOL isTopGradientLayer;
 
+/// 控制器消失图片圆角
+@property (nonatomic, assign) int dismissCornerRadius;
+
 @end
 
 NS_ASSUME_NONNULL_END

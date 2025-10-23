@@ -306,6 +306,7 @@
     photoView.imageView.contentMode = mode;
     photoView.playBtn.hidden = YES;
     photoView.liveMarkView.hidden = YES;
+    photoView.imageView.layer.cornerRadius = self.browser.configure.dismissCornerRadius;
     [UIView animateWithDuration:self.configure.animDuration animations:^{
         photoView.player.videoPlayView.alpha = 0;
         photoView.imageView.frame = sourceRect;
