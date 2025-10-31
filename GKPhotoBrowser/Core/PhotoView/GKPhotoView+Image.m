@@ -46,14 +46,26 @@
             isOrigin = YES;
         }
         
-        // 如果没有就加载sourceImageView的image
-        if (!placeholderImage) {
-            placeholderImage = photo.sourceImageView.image;
-        }
-        
-        // 如果还没有就加载传入的占位图
-        if (!placeholderImage) {
-            placeholderImage = photo.placeholderImage;
+        // 优先占位图显示
+        if (photo.placeholderImage) {
+            // 如果还没有就加载传入的占位图
+            if (!placeholderImage) {
+                placeholderImage = photo.placeholderImage;
+            }
+            // 如果没有就加载sourceImageView的image
+            if (!placeholderImage) {
+                placeholderImage = photo.sourceImageView.image;
+            }
+        } else {
+            // 如果没有就加载sourceImageView的image
+            if (!placeholderImage) {
+                placeholderImage = photo.sourceImageView.image;
+            }
+            
+            // 如果还没有就加载传入的占位图
+            if (!placeholderImage) {
+                placeholderImage = photo.placeholderImage;
+            }
         }
         
         self.imageView.image = placeholderImage;
