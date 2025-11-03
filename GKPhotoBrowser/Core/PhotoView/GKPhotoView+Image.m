@@ -160,7 +160,7 @@
     }
     
     if (url.absoluteString.length > 0) {
-        if (!photo.failed && !placeholderImage) {
+        if (!photo.failed && (photo.placeholderImage && !photo.finished) || !placeholderImage) {
             if (isOrigin && self.configure.originLoadStyle != GKPhotoBrowserLoadStyleCustom) {
                 [self.loadingView startLoading];
             }else if (!isOrigin && self.configure.loadStyle != GKPhotoBrowserLoadStyleCustom) {
