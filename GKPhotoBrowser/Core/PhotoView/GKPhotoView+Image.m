@@ -45,7 +45,7 @@
             placeholderImage = originImage;
             isOrigin = YES;
         }
-        
+        // MARK: 设置了sourceImageView会默认显示第一章图片，修改为占位图
         // 优先占位图显示
         if (photo.placeholderImage) {
             // 如果还没有就加载传入的占位图
@@ -160,7 +160,8 @@
     }
     
     if (url.absoluteString.length > 0) {
-        if (!photo.failed && (photo.placeholderImage && !photo.finished) || !placeholderImage) {
+        // MARK: 设置了sourceImageView不会加载loading，需要加载loading
+        if (!photo.failed && ((photo.placeholderImage && !photo.finished) || !placeholderImage)) {
             if (isOrigin && self.configure.originLoadStyle != GKPhotoBrowserLoadStyleCustom) {
                 [self.loadingView startLoading];
             }else if (!isOrigin && self.configure.loadStyle != GKPhotoBrowserLoadStyleCustom) {
